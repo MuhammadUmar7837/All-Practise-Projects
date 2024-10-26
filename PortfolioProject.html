@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .navbar {
+        width: 100%;
+        height: auto;
+        background-color: rgb(35, 121, 219);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+      }
+
+      .logo h1 {
+        color: white;
+        margin-left: 40%;
+      }
+      .nav {
+        margin-right: 10%;
+      }
+      .nav ul {
+        display: flex;
+      }
+      .nav ul li {
+        display: flex;
+        margin-right: 20%;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: color 1s ease, transform 1s ease;
+      }
+      .nav ul li:hover {
+        color: rgb(0, 0, 0);
+        transform: scale(1.2);
+      }
+
+      @media screen and (max-width: 666px) {
+        .nav ul li {
+          display: flex;
+          margin-right: 8%;
+          color: white;
+          font-size: 1.2rem;
+        }
+      }
+      @media screen and (max-width: 410px) {
+        .logo h1 {
+          color: white;
+          margin-left: 1%;
+          text-align: center;
+          margin-bottom: 10%;
+        }
+        .navbar {
+          width: 100%;
+          height: auto;
+          background-color: rgb(35, 121, 219);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+
+        .nav ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .nav ul li {
+          margin-bottom: 20px;
+        }
+      }
+
+      .main {
+        height: 80%;
+        width: 100%;
+        background-color: rgb(39, 77, 160);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        overflow: hidden;
+      }
+
+      @media screen and (max-width: 906px) {
+        .main {
+          height: 80%;
+          width: 100%;
+          background-color: rgb(39, 77, 160);
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .picsection img {
+        margin-top: 7%;
+        height: 38.1rem;
+        width: 28.4rem;
+        border-radius: 50%;
+        margin-bottom: 7.4%;
+        opacity: 0;
+        animation: slideIn 4s ease-out forwards;
+      }
+      @media screen and (max-width: 470px) {
+        .picsection img {
+          margin-top: 58%;
+          height: 29.1rem;
+          width: 20.4rem;
+          border-radius: 50%;
+          margin-bottom: 7.4%;
+        }
+        .parasection h3 {
+          font-size: 118%;
+          color: white;
+          white-space: nowrap;
+          overflow: hidden;
+          border-right: 3px solid white;
+          width: 0;
+          animation: typing 3s steps(22) 1s forwards,
+            blink-caret 0.75s step-end 4s forwards;
+          animation-delay: 5s;
+        }
+      }
+
+      /* Add typing effect */
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: rgb(255, 157, 9);
+        }
+      }
+
+      .parasection {
+        font-size: 200%;
+        color: white;
+      }
+
+      .parasection h3 {
+        font-size: 200%;
+        color: white;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid white;
+        width: 0;
+        animation: typing 3s steps(22) 1s forwards,
+          blink-caret 0.75s step-end 4s forwards;
+        animation-delay: 5s;
+      }
+
+      @media screen and (max-width: 595px) {
+        .parasection h3 {
+          font-size: 118%;
+          color: white;
+          white-space: nowrap;
+          overflow: hidden;
+          border-right: 3px solid white;
+          width: 0;
+          animation: typing 3s steps(22) 1s forwards,
+            blink-caret 0.75s step-end 4s forwards;
+          animation-delay: 5s;
+        }
+      }
+
+      span {
+        color: rgb(255, 255, 6);
+      }
+      #name {
+        color: rgb(248, 248, 248);
+        font-size: 70%;
+        font-weight: 900;
+      }
+      #word {
+        padding-top: 4%;
+        padding-bottom: 4%;
+        text-align: center;
+        font-size: 6.3rem;
+        color: white;
+        animation: slideIn 4s ease-out forwards;
+      }
+      div.container {
+        background-color: rgb(18 16 107);
+      }
+      .projectsection {
+        width: 100%;
+        height: 100%;
+
+        display: grid;
+        justify-content: center;
+        gap: 8.5rem;
+        grid-template-columns: repeat(3, minmax(10px, 271px));
+        padding: 20px;
+      }
+      @media screen and (max-width: 738px) {
+        .projectsection {
+          width: 100%;
+          height: 100%;
+
+          display: grid;
+          justify-content: center;
+          gap: 8.5rem;
+          grid-template-columns: repeat(2, minmax(10px, 271px));
+          padding: 20px;
+        }
+      }
+      @media screen and (max-width: 514px) {
+        .projectsection {
+          width: 100%;
+          height: 100%;
+
+          display: grid;
+          justify-content: center;
+          gap: 8.5rem;
+          grid-template-columns: repeat(1, minmax(10px, 271px));
+          padding: 20px;
+        }
+      }
+      .card {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        height: 100%;
+        border: 2px solid black;
+        text-align: start;
+        font-size: 20px;
+
+        box-shadow: 5px 5px 16px #555151;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.4s ease, filter 0.4s ease;
+      }
+
+      .card .text {
+        text-align: start;
+        padding: 5%;
+      }
+      .info {
+        display: flex;
+        color: rgb(161, 90, 228);
+
+        align-items: center;
+        gap: 10px;
+      }
+      .info input {
+        background-color: black;
+        color: aliceblue;
+        margin-left: auto;
+        padding: 5px 10px;
+        border: none;
+        transition: background-color 2s ease, transform 2s ease;
+      }
+      .info input:hover {
+        background-color: rgb(129, 129, 129);
+        color: white;
+        animation: buttonAnimation 2s ease-in-out;
+        transform: scale(1.1);
+      }
+      .card {
+        position: relative;
+        overflow: hidden;
+        height: auto;
+      }
+
+      .popup {
+        position: absolute;
+        width: 95%;
+        text-align: center;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: rgb(245, 159, 0);
+        padding: 10px;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        visibility: hidden;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .card:hover .popup {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+        pointer-events: auto;
+      }
+      @keyframes scaleUp {
+        from {
+          transform: translateX(-50%) translateY(100%) scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(-50%) translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      .card:hover .popup {
+        animation: scaleUp 1s ease forwards;
+      }
+      .footersection {
+        background-color: rgb(5, 7, 136);
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        
+      }
+
+      .linksection {
+        display: flex;
+        align-items: center;
+        padding-top: 10%;
+        margin: 20px;
+        letter-spacing: 9px;
+        cursor: pointer;
+        animation: slideIn 4s ease-out forwards;
+      }
+      @media screen and (max-width:682px) {
+        .linksection {
+        display: flex;
+        align-items: center;
+        padding-top: 10%;
+        margin: 20px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        line-height: 5.2rem;
+      }
+    }
+
+
+      @media screen and (max-width:366px) {
+        .linksection {
+        display: flex;
+        align-items: center;
+        padding-top: 10%;
+        margin: 20px;
+        letter-spacing: 9px;
+        cursor: pointer;
+        line-height: 5.2rem;
+      }
+    }
+
+      .linksection img {
+        filter: brightness(2) invert(1);
+        height: 40px;
+        width: auto;
+        margin-right: 10px;
+      }
+
+      .linksection a {
+        color: white;
+        font-size: 182%;
+        list-style-type: none;
+        text-decoration: none;
+        font-weight: bolder;
+      }
+
+      .footersection h4 {
+        color: whitesmoke;
+        text-align: center;
+        font-size: 300%;
+        padding-top: 20%;
+        animation: slideIn 4s ease-out forwards;
+      }
+
+      @media screen and (max-width: 600px) {
+        .linksection {
+          flex-direction: column;
+          padding-top: 5%;
+        }
+      }
+      /* .fotter {
+    background-color: #2010ac;
+    color: #f1f1f1;
+    padding: 1rem;
+    text-align: center;
+} */
+
+.footer-content {
+  background-color: rgb(35, 121, 219);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+     width: 100%;
+     padding-right: 10%;
+     padding-left:10% ;
+     color: white;
+     font-weight: bolder;
+    
+}
+
+.footer p {
+    margin: 0.5rem 0;
+    flex: 1;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+}
+
+.footer-links li {
+    display: inline;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+ 
+@media screen and (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; 
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer-links {
+        flex-direction: column; 
+    }
+
+    .footer-links li {
+        margin-bottom: 0.5rem;
+    }
+}
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo">
+          <h1>PrortFolio</h1>
+        </div>
+        <div class="nav">
+          <ul>
+            <li><a href="#"></a>Home</li>
+            <li><a href="#"></a>Project</li>
+            <li><a href="#"></a>Content</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="main">
+      <div class="picsection">
+        <img src="johnson-sarah_3.jpg" alt="" />
+      </div>
+      <div class="parasection">
+        <h2>
+          <span>Hi</span>, <span id="name">I am</span> John Doe
+          <br />
+          <h3>Frontened Developer</h3>
+        </h2>
+      </div>
+    </div>
+    <div class="container">
+      <h3 id="word">Projects</h3>
+      <div class="projectsection">
+        <div class="card">
+          <div class="image">
+            <img src="Technology.jfif" alt="" />
+          </div>
+          <div class="text">
+            <a href="#"><h4>New Gadgets Released</h4></a>
+            <br />
+            <p>
+              Lorem ipsum dolor, sit amet <br />consectetur adipisicing elit.
+              Inventore?
+            </p>
+            <div class="info">
+              <h6>John Doe <br />19Sep2021</h6>
+              <input type="button" id="button" value="Technology" />
+            </div>
+          </div>
+
+          <div class="popup"><h3>AI Projects</h3></div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="Analytical.jpg" alt="" />
+          </div>
+          <div class="text">
+            <a href="#"><h4>New Gadgets Released</h4></a>
+            <br />
+            <p>
+              Lorem ipsum dolor, sit amet <br />consectetur adipisicing elit.
+              Inventore?
+            </p>
+            <div class="info">
+              <h6>John Doe <br />19Sep2021</h6>
+              <input type="button" id="button" value="Technology" />
+            </div>
+          </div>
+
+          <div class="popup"><h3>Analytical Projects</h3></div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="Picture.webp" alt="" />
+          </div>
+          <div class="text">
+            <a href="#"><h4>New Gadgets Released</h4></a>
+            <br />
+            <p>
+              Lorem ipsum dolor, sit amet <br />consectetur adipisicing elit.
+              Inventore?
+            </p>
+            <div class="info">
+              <h6>John Doe <br />19Sep2021</h6>
+              <input type="button" id="button" value="Technology" />
+            </div>
+          </div>
+
+          <div class="popup"><h3>New Generations Projects</h3></div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="innovative.jfif" alt="" />
+          </div>
+          <div class="text">
+            <a href="#"><h4>New Gadgets Released</h4></a>
+            <br />
+            <p>
+              Lorem ipsum dolor, sit amet <br />consectetur adipisicing elit.
+              Inventore?
+            </p>
+            <div class="info">
+              <h6>John Doe <br />19Sep2021</h6>
+              <input type="button" id="button" value="Technology" />
+            </div>
+          </div>
+
+          <div class="popup"><h3>Innovations</h3></div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="Vector-edu logo.jpg" alt="" />
+          </div>
+          <div class="text">
+            <a href="#"><h4>New Gadgets Released</h4></a>
+            <br />
+            <p>
+              Lorem ipsum dolor, sit amet <br />consectetur adipisicing elit.
+              Inventore?
+            </p>
+            <div class="info">
+              <h6>John Doe <br />19Sep2021</h6>
+              <input type="button" id="button" value="Technology" />
+            </div>
+          </div>
+
+          <div class="popup"><h3>Customized Future</h3></div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="responsive.jfif" alt="" />
+          </div>
+          <div class="text">
+            <a href="#"><h4>New Gadgets Released</h4></a>
+            <br />
+            <p>
+              Lorem ipsum dolor, sit amet <br />consectetur adipisicing elit.
+              Inventore?
+            </p>
+            <div class="info">
+              <h6>John Doe <br />19Sep2021</h6>
+              <input type="button" id="button" value="Technology" />
+            </div>
+          </div>
+
+          <div class="popup"><h3>Responsive Designs</h3></div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footersection">
+        <h4>Lets Work Together....</h4>
+        <div class="linksection">
+          <img src="linkedIn_PNG8.png" alt="" />
+          <a href="https://www.linkedin.com/login">Linkdin</a>
+          <img src="Instagram.png" alt="" />
+          <a href="https://www.instagram.com/">Instagram</a>
+          <img src="twitter.png" alt="" />
+          <a href="https://www.trustedreviews.com/how-to/use-twitter-4214325">Twitter</a>
+        </div>
+        <div class="linksection">
+          <img src="Google-Logo-PNG3.png" alt="" />
+          <a href="https://www.google.co.uk/">Google</a>
+          <img src="Microsoft-Logo-PNG4.png" alt="" />
+          <a href="https://www.office.com/">Microsoft</a>
+        </div>
+      </div>
+    </footer>
+    <fotter class="fotter">
+      <div class="footer-content">
+          <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+          <ul class="footer-links">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </div>
+  </fotter>
+  </body>
+</html>
